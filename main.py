@@ -60,7 +60,24 @@ def hello_world():
         kwargs['i_bad'] = contact_ratio_my_bad(texts)[username] or 0 # my bad
         kwargs['they_bad'] = contact_ratio_my_bad(texts)[partner_name] or 0
 
+        ratio_values = contact_ratio_big_words(texts)
+        if ratio_values[username] < ratio_values[partner_name]:
+            kwargs['smart_ratio_message'] = "{} sends more big words.".format(partner_first_name)
+        elif ratio_values[username] > ratio_values[partner_name]:
+            kwargs['smart_ratio_message'] = "You send more big words."
+        else:
+            kwargs['smart_ratio_message'] = "You both send the same amount of big words!"
+        kwargs['smart_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
 
+        ratio_values = contact_ratio_big_words(texts)
+        if ratio_values[username] < ratio_values[partner_name]:
+            kwargs['power_ratio_message'] = "{} sends more k.".format(partner_first_name)
+        elif ratio_values[username] > ratio_values[partner_name]:
+            kwargs['power_ratio_message'] = "You send more k."
+        else:
+            kwargs['power_ratio_message'] = "You both send the same amount of k!"
+
+        kwargs['power_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
 
 
         return render_template('new_results.html',
