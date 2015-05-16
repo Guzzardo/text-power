@@ -5,6 +5,14 @@ from time import mktime
 from datetime import datetime
 import emoji
 import csv
+from twilio.rest import TwilioRestClient
+
+def send_text():
+	account = "AC9231b8c5d2f8b797fbd1eebd43f075c5"
+	token = "cc44733b28615f2865ccb244277ebb17"
+	client = TwilioRestClient(account, token)
+	message = client.messages.create(to="2244565406", from_="+16466797258", body="Hi! I just tried this cool new app called Textrospective. You should totally check it out! It analyzed our entire text message history and calculated our interpersonal compatibility across a plethora of psychometrics. Turns out we're ruining each other's lives. I don't think this is going to work out :( Have a great day, and don't forget to visit textrospective.com!"
+
 
 def parse_time(date_time_string):
 	"""Accepts a time string in '' format, and returns it in epoch format"""
