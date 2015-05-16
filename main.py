@@ -38,13 +38,13 @@ def hello_world():
         ratio_values = contact_ratio_poop(texts)
 
         if ratio_values[username] < ratio_values[partner_name]:
-        	kwargs['poop_ratio_message'] = "Congrats, they're shittier.".format(partner_first_name)
+            kwargs['poop_ratio_message'] = "Congrats, they're shittier.".format(partner_first_name)
             kwargs['poop_count_message'] = "They've used the poop emoji {} times.".format(ratio_values[partner_name])
         elif ratio_values[username] > ratio_values[partner_name]:
-        	kwargs['poop_ratio_message'] = "Congrats, you're shittier."
+            kwargs['poop_ratio_message'] = "Congrats, you're shittier."
             kwargs['poop_count_message'] = "You've used the poop emoji {} times.".format(ratio_values[username])
         else:
-        	kwargs['poop_ratio_message'] = "Congrats, you're both shitty."
+            kwargs['poop_ratio_message'] = "Congrats, you're both shitty."
             kwargs['poop_count_message'] = "You've both used the poop emoji {} times.".format(ratio_values[partner_name])
 
         # kwargs['poop_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
@@ -74,11 +74,11 @@ def hello_world():
 
         ratio_values = contact_ratio_big_words(texts)
         if ratio_values[username] < ratio_values[partner_name]:
-            kwargs['power_ratio_message'] = "{} sends more k.".format(partner_first_name)
+            kwargs['power_ratio_message'] = "{} is more k.".format(partner_first_name)
         elif ratio_values[username] > ratio_values[partner_name]:
-            kwargs['power_ratio_message'] = "You send more k."
+            kwargs['power_ratio_message'] = "You are more k."
         else:
-            kwargs['power_ratio_message'] = "You both send the same amount of k!"
+            kwargs['power_ratio_message'] = "You both k!"
 
         kwargs['power_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
 
