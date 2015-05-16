@@ -255,6 +255,18 @@ def contact_ratio_neediness_would_you(texts):
 def contact_ratio_sorry(texts):
 	return contact_ratio_word_count(texts, 'sorry')
 
+def contact_ratio_problem(texts):
+	participants = defaultdict(int)
+	for text in texts:
+		for word in ['np',
+					  'no problem',
+					]:
+			participants[text['name']] += text['message'].lower().count(word)
+	return participants
+
+def contact_ratio_my_bad(texts):
+	return contact_ratio_word_count(texts, 'my bad')
+
 def contact_ratio_poop(texts):
 	return contact_ratio_word_count(texts, u'\udca9')
 

@@ -17,41 +17,64 @@ def hello_world():
 
         username, texts = parse_message_file(file_contents)
 
+        kwargs = {}
+
         # ratio
         ratio_values = contact_ratio(texts)
         # Get the other persons name
         partner_name = [i for i in ratio_values.keys() if i != username][0]
         partner_first_name = 'Stephanie' #partner_name.split(' ')[0]
-        ratio = "{}:{}".format(ratio_values[username], ratio_values[partner_name])
+        kwargs['ratio'] = "{}:{}".format(ratio_values[username], ratio_values[partner_name])
 
         if ratio_values[username] < ratio_values[partner_name]:
-        	ratio_message = "{} sent you {} more texts!!".format(partner_first_name, ratio_values[partner_name]-ratio_values[username])
+        	kwargs['ratio_message'] = "{} sent you {} more texts!!".format(partner_first_name, ratio_values[partner_name]-ratio_values[username])
         elif ratio_values[username] > ratio_values[partner_name]:
-        	ratio_message = "You text more :("
+        	kwargs['ratio_message'] = "You text more :("
         else:
-        	ration_message = "You both text the same amount!"
+        	kwargs['ratio_message'] = "You both text the same amount!"
 
 
         ### GET THE POOP COUNT
         ratio_values = contact_ratio_poop(texts)
 
         if ratio_values[username] < ratio_values[partner_name]:
-        	poop_ratio_message = "{} sends more poop.".format(partner_first_name)
+        	kwargs['poop_ratio_message'] = "{} sends more poop.".format(partner_first_name)
         elif ratio_values[username] > ratio_values[partner_name]:
-        	poop_ratio_message = "You send more poop."
+        	kwargs['poop_ratio_message'] = "You send more poop."
         else:
-        	poop_ratio_message = "You both send the same amount of poop!"
+        	kwargs['poop_ratio_message'] = "You both send the same amount of poop!"
 
-        poop_count_message = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
+        kwargs['poop_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
+
+        kwargs['i_want'] = contact_ratio_neediness_i_want(texts)[username],
+        kwargs['they_want'] = contact_ratio_neediness_i_want(texts)[partner_name],
+        kwargs['i_need'] = contact_ratio_neediness_i_need(texts)[username],
+        kwargs['they_need'] = contact_ratio_neediness_i_need(texts)[partner_name],
+        kwargs['i_could'] = contact_ratio_neediness_could_you(texts)[username],
+        kwargs['they_could'] = contact_ratio_neediness_could_you(texts)[partner_name],
+
+        kwargs['im_sorry'] = contact_ratio_sorry(texts)[username]
+        kwargs['they_sorry'] = contact_ratio_sorry(texts)[partner_name]
+        kwargs['i_problem'] = contact_ratio_problem(texts)[username] # np / no problem
+        kwargs['they_problem'] = contact_ratio_problem(texts)[partner_name]
+        kwargs['i_bad'] = contact_ratio_my_bad(texts)[username] # my bad
+        kwargs['they_bad'] = contact_ratio_my_bad(texts)[partner_name]
 
 
 
-        return render_template('new_results.html', 
+
+        return render_template('new_results.html',
         	partner_first_name=partner_first_name,
-        	ratio=ratio,
-        	ratio_message=ratio_message,
-        	poop_ratio_message=poop_ratio_message,
-        	poop_count_message=poop_count_message,
+
+            # SHAME
+            ratio_i_sorry=contact_ratio_sorry(texts)[username],
+            ratio_they_sorry=contact_ratio_sorry(texts)[partner_name],
+            # RAGE
+            ratio_i_rage=contact_ratio_all_caps(texts)[username],
+            ratio_they_rage=contact_ratio_all_caps(texts)[partner_name],
+
+            **kwargs
+
         )
     else:
         return render_template('landing.html')
