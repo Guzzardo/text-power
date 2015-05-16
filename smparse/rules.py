@@ -4,19 +4,19 @@ import numpy
 from textblob import TextBlob
 
 """
-poop emoji count✔︎
-sentiment analysis✔︎
+poop emoji count
+sentiment analysis
 neediness
-	I want✔︎
-	I need✔︎
-	could you✔︎
-	will you✔︎
-sorry count✔︎
-big words count✔︎
-all caps (passion)✔︎
-texts least✔︎
-average text length✔︎
-k count✔︎
+	I want
+	I need
+	could you
+	will you
+sorry count
+big words count
+all caps (passion)
+texts least
+average text length
+k count
 """
 
 
@@ -240,23 +240,23 @@ def contact_ratio_word_count(texts, keyword):
 			participants[text['name']] += text['message'].lower().count(keyword)
 	return participants
 
-def contact_ratio_neediness_i_want(texts, message):
-	return contact_ratio_word_count(texts, message, 'i want')
+def contact_ratio_neediness_i_want(texts):
+	return contact_ratio_word_count(texts, 'i want')
 
-def contact_ratio_neediness_i_need(texts, message):
-	return contact_ratio_word_count(texts, message, 'i need')
+def contact_ratio_neediness_i_need(texts):
+	return contact_ratio_word_count(texts, 'i need')
 
-def contact_ratio_neediness_could_you(texts, message):
-	return contact_ratio_word_count(texts, message, 'could you')
+def contact_ratio_neediness_could_you(texts):
+	return contact_ratio_word_count(texts, 'could you')
 
-def contact_ratio_neediness_would_you(texts, message):
-	return contact_ratio_word_count(texts, message, 'would_you')
+def contact_ratio_neediness_would_you(texts):
+	return contact_ratio_word_count(texts, 'would_you')
 
-def contact_ratio_sorry(texts, message):
-	return contact_ratio_word_count(texts, message, 'sorry')
+def contact_ratio_sorry(texts):
+	return contact_ratio_word_count(texts, 'sorry')
 
-def contact_ratio_poop(texts, message):
-	return contact_ratio_word_count(texts, message, u'\udca9')
+def contact_ratio_poop(texts):
+	return contact_ratio_word_count(texts, u'\udca9')
 
 def contact_ratio_all_caps(texts):
 	"""Returns how many times each party sent all caps"""
