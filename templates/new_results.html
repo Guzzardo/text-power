@@ -1,0 +1,364 @@
+<style>
+body {
+    background-color: #333333;
+font-family: "futura-pt",sans-serif;
+font-style: normal;
+font-weight: 700;
+    letter-spacing: 5px;
+	text-transform: uppercase;
+	margin: auto;
+}
+.dumb {
+	margin:-20px;
+}
+.blue {
+	background-color: #9BBEF3;
+	position: absolute;
+	width: 100%;
+	height: 180px;
+	top: 200px;
+	z-index: -2;
+	display: block;
+}
+
+.beige {
+background-color: #a4898c;
+  position: absolute;
+  width: 100%;
+  height: 430px;
+  top: 360px;
+  z-index: -2;
+}
+
+.orangebgfull {
+	background-color: #ff7200;
+ 	position: absolute;
+  	width: 100%;
+  	height: 430px;
+  	top: 790px;
+  	z-index: -2;
+}
+
+.orangebg {
+    background-color: #ff7200;
+}
+
+.orange {
+    color: #ff7200;
+      left: -59px;
+  position: relative;
+}
+
+.white {
+	color: #ffffff;
+}
+
+.lgrey {
+	color: #999999;
+}
+
+.mgrey {
+	color: #666666;
+}
+
+.dgrey {
+	color: #333333;
+}
+
+.center {
+	text-align: center;
+}
+
+.reportcontainer {
+	width: 780px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	background-color: #f3f3f3;
+}
+
+.header {
+	background-color: #f3f3f3;
+	margin-top: 100px;
+	padding-top: 60px;
+	height: 200px;
+	width: 780px;
+}
+
+.report {
+	background-color: #f3f3f3;
+	padding-top: 60px;
+	width: 780px;
+}
+
+.generalfacts {
+	height: 370px;
+	width: 780px;
+	margin: auto;
+}
+
+.section {
+	padding-top: 60px;
+}
+
+.double {
+	padding: 60px;
+	border: 10px solid #ffffff;
+	width: 460px;
+	margin: auto;
+}
+
+.single {
+	padding: 60px;
+	border: 10px solid #ffffff;
+	width: 460px;
+	margin: auto;
+	margin-top: 40px;
+}
+
+.block {
+	width: 600px;
+	height: 10px;
+	background-color: #cccccc;
+	text-align: center;
+	margin: auto;
+	margin-top: 60px;
+}
+
+.poop {
+	font-size: 144px;
+	text-align: center;
+}
+
+.reportblock {
+	width: 600px;
+	padding: 60px;
+	margin: auto;
+}
+
+.sectionblock {
+	width: 780px;
+	height: 370px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.larry {
+	background-image: url(http://i.imgur.com/BSxiq.gif);
+}
+
+.shame {
+	background-image: url(http://myreactiongifs.com/gifs/colinfarreldisgusted.gif);
+}
+
+.smart {
+	background-image: url(http://i.imgur.com/qjAAn1m.gif);
+}
+
+.rage {
+	background-image: url(http://i.imgur.com/rTamGUR.gif);
+}
+
+.needy {
+	background-image: url(http://i.imgur.com/wavvS9j.gif);
+}
+
+.power {
+		background-image: url(http://i.imgur.com/bAs2vWs.gif);
+}
+
+h1{
+    font-size: 144px;
+   	letter-spacing: 5px;
+   	line-height: 0;	
+   	margin-top: 20px;
+}
+
+h2{
+    font-size: 72px;
+   	letter-spacing: 5px;
+}
+
+h3{
+    font-size: 36px;
+   	letter-spacing: 5px;
+   	color: #666666;	
+}
+
+h4{
+    font-size: 18px;
+   	letter-spacing: 5px;
+	margin-top: -20px;
+	color: #666666;
+}
+
+h5 {
+    font-size: 14px;
+   	letter-spacing: 5px;
+}
+
+table.meth-table {
+  width: 610px;
+  border-bottom: 10px solid #ccc;
+  border-collapse: collapse;
+}
+table.meth-table td {
+border: 10px solid #ccc;
+  width: 81px;
+  border-collapse: separate;
+  padding: 10px;
+}
+
+thead {
+  text-align: left;
+  color: #999;
+  font-size: 15px;
+}
+
+</style>
+
+</head>
+    <body>
+	<div class="blue"></div>	
+	<div class="beige"></div>
+	<div class="orangebgfull"></div>
+	<div class="center">
+    	<div class="reportcontainer">
+	    	<div class="header">
+	    		<h5 class="lgrey">We've reviewed your conversations with...</h5>
+	    		<h2 class="orange">{{ partner_first_name }}</h2>
+	    	</div>
+    		<div class="generalfacts orangebg section">
+				<h2 class="white double">General Facts</h2>
+			</div>
+			<div class="report">
+				<div class="reportblock">
+					<h1 class="orange">{{ratio}}</h1>
+					<h4 class="lgrey">{{ ratio_message }}</h4>
+					<div class="block"></div>
+				</div>
+				<div class="reportblock">
+					<div class="poop"><img src="http://i.imgur.com/gQggsps.png" height="180px" width="180px"/></div>
+					<h3>{{poop_ratio_message}}</h3>
+					<h4>{{poop_count_message}}</h4>
+					<div class="block"></div>
+				</div>
+<!-- 				<div class="reportblock">
+					<h1 class="orange">32%</h1>
+					<h3>Some witty line.</h3>
+					<h4 class="lgrey">You send blah blah</h4>
+				</div> -->
+			<div class="sectionblock section larry">
+					<h2 class="white double">Sentiment Analysis</h2>
+			</div>
+				<div class="reportblock">
+					<h3>We did a bunch of meth and science.</h3>
+					<h4 class="lgrey">The results reaveal important insights like</h4>
+				</div>
+			<div class="sectionblock section needy">
+					<h2 class="white single">Needy</h2>
+			</div>
+				<div class="reportblock">
+					<table class="meth-table">
+						<thead>
+							<th>CONTEXT</th>
+							<th>YOU</th>
+							<th>THEM</th>
+						</thead>
+						<tbody>
+						<tr>
+							<td>I WANT</td>
+							<td>{{i_want}}1</td>
+							<td>{{they_want}}1</td>
+						</tr>
+						<tr>
+							<td>I NEED</td>
+							<td>{{i_need}}1</td>
+							<td>{{they_need}}1</td>
+						</tr>
+						<tr>
+							<td>COULD YOU</td>
+							<td>{{i_could}}1</td>
+							<td>{{they_could}}1</td>
+						</tr>	
+					</tbody>
+					</table>
+				</div>
+			</div>	
+			<div class="sectionblock section shame">
+					<h2 class="white single">Shame</h2>
+			</div>
+				<div class="reportblock">
+					<table class="meth-table">
+						<thead>
+							<th>CONTEXT</th>
+							<th>YOU</th>
+							<th>THEM</th>
+						</thead>
+						<tbody>
+						<tr>
+							<td>Sorry</td>
+							<td>{{ i_sorry }}1</td>
+							<td>{{they_sorry}}1</td>
+						</tr>
+						<tr>
+							<td>No Problem</td>
+							<td>{{i_problem}}1</td>
+							<td>{{they_problem}}1</td>
+						</tr>
+						<tr>
+							<td>My Bad</td>
+							<td>{{i_bad}}1</td>
+							<td>{{they_bad}}1</td>
+						</tr>	
+					</tbody>
+					</table>
+				</div>
+			<div class="sectionblock section rage">
+					<h2 class="white single">Rage</h2>
+			</div>
+				<div class="reportblock">
+					<table class="meth-table">
+						<thead>
+							<th>CONTEXT</th>
+							<th>YOU</th>
+							<th>THEM</th>
+						</thead>
+						<tbody>
+						<tr>
+							<td>Swear words</td>
+							<td>{{ i_swear }}1</td>
+							<td>{{ they_swear }}1</td>
+						</tr>
+						<tr>
+							<td>No Problem</td>
+							<td>{{i_problem}}1</td>
+							<td>{{they_problem}}1</td>
+						</tr>
+						<tr>
+							<td>My Bad</td>
+							<td>{{i_bad}}1</td>
+							<td>{{they_bad}}1</td>
+						</tr>	
+					</tbody>
+					</table>
+				</div>
+			<div class="sectionblock section smart">
+					<h2 class="white single">Smart</h2>
+			</div>
+				<div class="reportblock">
+					<h3>We did a bunch of meth and science.</h3>
+					<h4 class="lgrey">The results will cover real things like</h4>
+				</div>	
+			<div class="sectionblock section power">
+					<h2 class="white single">Power</h2>
+			</div>
+				<div class="reportblock">
+					<h3>We did a bunch of meth and science.</h3>
+					<h4 class="lgrey">The results will cover real things like</h4>
+				</div>
+			</div>	
+		</div>
+	</div>
+    </body>
+</html>
