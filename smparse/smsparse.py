@@ -6,7 +6,9 @@ from rules import *
 def main():
 	input_file = open('Adam_s_iPhone and Joe_Guzzardo__UCB___5868500690_.txt')
 	file_contents = input_file.read().decode("utf-16")
-	texts = parse_message_file(file_contents)
+	username, texts = parse_message_file(file_contents)
+
+	print "USERNAME : {}".format(username)
 	
 	# rows = csv.DictReader(open('Adam_s_iPhone and Joe_Guzzardo__UCB___5868500690_.csv', 'rb'))
 	# csv_texts = [row for row in rows]

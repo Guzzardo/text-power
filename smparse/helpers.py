@@ -17,7 +17,7 @@ def parse_time(date_time_string):
 def parse_message_file(raw_input):
 	"""Accepts file content and returns list of message dicts"""
 	lines = raw_input.split('\n[')
-	lines.pop(0)
+	username = re.search('between (.*?) and', lines.pop(0)).group(1)
 
 	company_regex = re.compile('(\[(.)*\])')
 	phone_regex = re.compile('(\(\d+\))')
@@ -35,7 +35,7 @@ def parse_message_file(raw_input):
 			'message': message,
 		})
 
-	return texts
+	return username, texts
 
 def parse_csv_texts(csv_texts):
 	"""Accepts CSV parsed content, and makes it into the content as above"""
