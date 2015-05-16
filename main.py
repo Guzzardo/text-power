@@ -38,20 +38,23 @@ def hello_world():
         ratio_values = contact_ratio_poop(texts)
 
         if ratio_values[username] < ratio_values[partner_name]:
-        	kwargs['poop_ratio_message'] = "{} sends more poop.".format(partner_first_name)
+        	kwargs['poop_ratio_message'] = "Congrats, they're shittier.".format(partner_first_name)
+            kwargs['poop_count_message'] = "They've used the poop emoji {} times.".format(ratio_values[partner_name])
         elif ratio_values[username] > ratio_values[partner_name]:
-        	kwargs['poop_ratio_message'] = "You send more poop."
+        	kwargs['poop_ratio_message'] = "Congrats, you're shittier."
+            kwargs['poop_count_message'] = "You've used the poop emoji {} times.".format(ratio_values[username])
         else:
-        	kwargs['poop_ratio_message'] = "You both send the same amount of poop!"
+        	kwargs['poop_ratio_message'] = "Congrats, you're both shitty."
+            kwargs['poop_count_message'] = "You've both used the poop emoji {} times.".format(ratio_values[partner_name])
 
-        kwargs['poop_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
+        # kwargs['poop_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
 
-        kwargs['i_want'] = contact_ratio_neediness_i_want(texts)[username][0] or 0,
-        kwargs['they_want'] = contact_ratio_neediness_i_want(texts)[partner_name][0] or 0,
-        kwargs['i_need'] = contact_ratio_neediness_i_need(texts)[username][0] or 0,
-        kwargs['they_need'] = contact_ratio_neediness_i_need(texts)[partner_name][0] or 0,
-        kwargs['i_could'] = contact_ratio_neediness_could_you(texts)[username][0] or 0,
-        kwargs['they_could'] = contact_ratio_neediness_could_you(texts)[partner_name][0] or 0,
+        kwargs['i_want'] = contact_ratio_neediness_i_want(texts)[username] or 0,
+        kwargs['they_want'] = contact_ratio_neediness_i_want(texts)[partner_name] or 0,
+        kwargs['i_need'] = contact_ratio_neediness_i_need(texts)[username] or 0,
+        kwargs['they_need'] = contact_ratio_neediness_i_need(texts)[partner_name] or 0,
+        kwargs['i_could'] = contact_ratio_neediness_could_you(texts)[username] or 0,
+        kwargs['they_could'] = contact_ratio_neediness_could_you(texts)[partner_name] or 0,
 
         kwargs['im_sorry'] = contact_ratio_sorry(texts)[username] or 0
         kwargs['they_sorry'] = contact_ratio_sorry(texts)[partner_name] or 0
