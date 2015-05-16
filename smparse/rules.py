@@ -151,5 +151,11 @@ def contact_ratio_neediness(texts, message):
 			participants[text['name']] += text['message'].lower().count(swear)
 	return participants
 
-
+def contact_ratio_all_caps(texts, message):
+	"""Returns how many times each party sent all caps"""
+	participants = defaultdict(int)
+	for text in texts:
+		if text['message'].upper() == text['message']:
+			participants[text['name']] += 1
+	return participants
 
