@@ -295,6 +295,7 @@ def contact_ratio_average_length(texts):
 def contact_ratio_big_words(texts):
 	participants = defaultdict(int)
 	for text in texts:
-		if len(text['message']) >= 10:
-			participants[text['name']] += 1
+		for word in text['message'].split(' '):
+			if len(word) >= 10:
+				participants[text['name']] += 1
 	return participants
