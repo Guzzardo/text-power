@@ -159,3 +159,14 @@ def contact_ratio_all_caps(texts, message):
 			participants[text['name']] += 1
 	return participants
 
+def contact_ratio_poop(texts, message):
+	"""Returns how many times each party sent poop emoji"""
+	participants = defaultdict(int)
+	for text in texts:
+		if u'\udca9' in text['message']:
+			participants[text['name']] += 1
+	return participants
+
+
+
+
