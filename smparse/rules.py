@@ -50,3 +50,106 @@ def contact_ratio_message(texts, message):
 		if text['message'].strip().lower() == message.strip().lower():
 			participants[text['name']] += 1
 	return participants
+
+def contact_ratio_one_letter(texts, message):
+	"""Returns how many times each party sent a one-character message"""
+	participants = defaultdict(int)
+	for text in texts:
+		if len(text['message']) == 1:
+			participants[text['name']] += 1
+	return participants
+
+def contact_ratio_swear_words(texts, message):
+	"""Returns how many times each party sent swear words"""
+	participants = defaultdict(int)
+	for text in texts:
+		for swear in [
+						'anal',
+						'anus',
+						'arse',
+						'ass',
+						'balls',
+						'bastard',
+						'bitch',
+						'biatch',
+						'bloody',
+						'blowjob',
+						'blow job',
+						'bollock',
+						'bollok',
+						'boner',
+						'boob',
+						'bugger',
+						'bum',
+						'butt',
+						'clitoris',
+						'cock',
+						'coon',
+						'crap',
+						'cunt',
+						'damn',
+						'dick',
+						'dildo',
+						'dyke',
+						'fag',
+						'feck',
+						'fellate',
+						'fellatio',
+						'felching',
+						'fuck',
+						'f u c k',
+						'fudgepacker',
+						'fudge packer',
+						'flange',
+						'Goddamn',
+						'God damn',
+						'hell',
+						'homo',
+						'jerk',
+						'jizz',
+						'knob',
+						'muff',
+						'nigger',
+						'nigga',
+						'penis',
+						'piss',
+						'prick',
+						'pube',
+						'pussy',
+						'queer',
+						'scrotum',
+						'shit',
+						's hit',
+						'sh1t',
+						'slut',
+						'smegma',
+						'spunk',
+						'tit',
+						'tosser',
+						'turd',
+						'twat',
+						'vagina',
+						'wank',
+						'whore',
+						'wtf',
+					  ]:
+			participants[text['name']] += text['message'].lower().count(swear)
+	return participants
+
+def contact_ratio_neediness(texts, message):
+	"""Returns how many times each party sent needy words"""
+	participants = defaultdict(int)
+	for text in texts:
+		for swear in ['i need',
+					  'i want',
+					  'my need',
+					  'my want',
+					  'will you',
+					  'can you',
+					  'would you',
+					]:
+			participants[text['name']] += text['message'].lower().count(swear)
+	return participants
+
+
+
