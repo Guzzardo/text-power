@@ -74,7 +74,7 @@ def hello_world():
 
         ratio_values = contact_ratio_big_words(texts)
         if ratio_values[username] < ratio_values[partner_name]:
-            kwargs['power_ratio_message'] = "{} is more k.".format(partner_first_name)
+            kwargs['power_ratio_message'] = "k.".format()
         elif ratio_values[username] > ratio_values[partner_name]:
             kwargs['power_ratio_message'] = "You are more k."
         else:
