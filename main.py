@@ -56,7 +56,7 @@ def hello_world():
         kwargs['i_could'] = contact_ratio_neediness_could_you(texts)[username] or 0,
         kwargs['they_could'] = contact_ratio_neediness_could_you(texts)[partner_name] or 0,
 
-        kwargs['im_sorry'] = contact_ratio_sorry(texts)[username] or 0
+        kwargs['i_sorry'] = contact_ratio_sorry(texts)[username] or 0
         kwargs['they_sorry'] = contact_ratio_sorry(texts)[partner_name] or 0
         kwargs['i_problem'] = contact_ratio_problem(texts)[username] or 0 # np / no problem
         kwargs['they_problem'] = contact_ratio_problem(texts)[partner_name] or 0
