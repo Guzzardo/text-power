@@ -14,7 +14,7 @@ def hello_world():
 
         return render_template('test_results.html', messages_content=messages_content)
     else:
-        return render_template('test_home.html', name='name')
+        return render_template('landing.html', name='name')
 
 
 if __name__ == '__main__':
