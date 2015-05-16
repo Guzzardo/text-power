@@ -1,0 +1,134 @@
+<html>
+
+<head>
+	<style>
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 780px;
+}
+
+body{
+	font-family: "futura-pt",sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+}
+
+#title-block {
+	color: #a4898c;
+}
+
+#title-block h1 {
+  font-size: 50px;
+}
+
+#title-block h3 {
+	margin-top: -30px;
+	margin-bottom: 60px;
+ 	font-size: 15px;
+}
+
+#review-block{
+	background-color: #f3f3f3;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.review-block__seperator {
+	height: 10px;
+	background-color: #d8d8d8;
+	width: 75%;
+}
+
+#review-block__name {
+	color: #fd7222;
+	font-size: 80px;
+}
+
+#review-block__ratio {
+	color: #a4898c;
+	font-size: 130px;
+}
+
+#review-block__ratio-text{
+	color: #a4898c;
+	font-size: 12px;
+	margin-bottom: 20px;
+	letter-spacing: 3px;
+}
+
+#back-blue {
+	position: absolute;
+	z-index: -20;
+	background-color: #9cbff1;
+	width: 100%;
+	height: 120px;
+	top: 210px;
+}
+
+#back-brown{
+	position: absolute;
+	z-index: -20;
+	background-color: #a4898c;
+	width: 100%;
+	height: 245px;
+	top: 330px;
+}
+
+#back-orange{
+  position: absolute;
+  z-index: -20;
+  background-color: #fd7222;
+  width: 100%;
+  height: 245px;
+  top: 575px;
+}
+
+	</style>
+</head>
+
+<body>
+
+	<div id="back-blue"></div>
+	<div id="back-brown"></div>
+	<div id="back-orange"></div>
+
+	<div id="title-block" class="center">
+		<center><h1>Well. Well. Well.</h1><center>
+		<h3>We've retrieved your text history with...</h3>
+	</div>
+	
+	<div id="review-block" class="center">
+
+		<div id="review-block__name">
+		<center>
+			Stephanie
+		</center>
+		</div>
+
+		<div class="review-block__seperator center"></div>
+
+		<div id="review-block__ratio">
+			<center>
+			30:1
+			</center>
+		</div>
+
+		<div id="review-block__ratio-text">
+			<center>
+				{{ ratio_text }}
+			</center>
+		</div>
+
+		<div class="review-block__seperator center"></div>
+
+	</div>
+
+	<script src="//use.typekit.net/pxb4kaz.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+</body>
+
+</html>

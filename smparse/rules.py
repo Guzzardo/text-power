@@ -2,26 +2,34 @@ from collections import defaultdict
 from helpers import *
 from textblob import TextBlob
 
+def sentiment_struc():
+	return {
+		'pos': 0,
+		'neg': 0,
+		'neutral': 0,
+	}
 # {:adam => {:pos => 42, :neg => 53, :neutral => 54}}
-def sentiment_count(text):
-	participants = defaultdict(defaultdict(int))
+def sentiment_count(texts):
+	participants = defaultdict(sentiment_struc)
 	for text in texts:
-		text_blob = TextBlob(text)
-		sentiment_score = text_blob.sentiment
-		if sentiment_score > .1:
+		if text['message'].lower().strip() == 'ok':
+			continue
+		text_blob = TextBlob(text['message'])
+		sentiment_score = text_blob.sentiment.polarity
+		if sentiment_score > 0:
 			participants[text['name']]['pos'] += 1
-		elif sentiment_score < -.1:
+		elif sentiment_score < 0:
 			participants[text['name']]['neg'] += 1
 		else:
 			participants[text['name']]['neutral'] += 1
 	return participants
 
-def positivity_average(text):
+def positivity_average(texts):
 	"""Returns the positivity score for each party"""
 	participants = defaultdict(list)
 	for text in texts:
-		text_blob = TextBlob(text)
-		pos_score = text_blob.sentiment
+		text_blob = TextBlob(text['message'])
+		pos_score = text_blob.sentiment.polarity
 		if pos_score > .1:
 			participants[text['name']].append(pos_score)
 	ret = {}
@@ -30,12 +38,12 @@ def positivity_average(text):
 		ret[key] = average
 	return ret
 
-def negativity_average(text):
+def negativity_average(texts):
 	"""Returns the negativity score for each party"""
 	participants = defaultdict(list)
 	for text in texts:
-		text_blob = TextBlob(text)
-		neg_score = text_blob.sentiment
+		text_blob = TextBlob(text['message'])
+		neg_score = text_blob.sentiment.polarity
 		if neg_score < -.1:
 			participants[text['name']].append(neg_score)
 	ret = {}
@@ -48,8 +56,8 @@ def sentiment_average(text):
 	"""Returns the average sentiment for each party"""
 	participants = defaultdict(list)
 	for text in texts:
-		text_blob = TextBlob(text)
-		sentiment_score = text_blob.sentiment
+		text_blob = TextBlob(text['message'])
+		sentiment_score = text_blob.sentiment.polarity
 		if sentiment_score > .1 or sentiment_score < -1:
 			participants[text['name']].append(sentiment_score)
 	ret = {}
