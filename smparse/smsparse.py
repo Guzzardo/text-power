@@ -34,11 +34,13 @@ def main():
 	print "\nText to Text Ratio with just Ok"
 	print contact_ratio_message(texts, 'ok')
 
-	
+	print "\"Sentiment Count"
 	print sentiment_count(texts)
 
+	print "\nPositivity Average"
 	print positivity_average(texts)
 
+	print "\nNegativity average"
 	print negativity_average(texts)
 
 if __name__ == '__main__':

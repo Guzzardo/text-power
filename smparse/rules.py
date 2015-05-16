@@ -133,7 +133,7 @@ def contact_ratio_message(texts, message):
 			participants[text['name']] += 1
 	return participants
 
-def contact_ratio_one_letter(texts, message):
+def contact_ratio_one_letter(texts):
 	"""Returns how many times each party sent a one-character message"""
 	participants = defaultdict(int)
 	for text in texts:
@@ -141,7 +141,7 @@ def contact_ratio_one_letter(texts, message):
 			participants[text['name']] += 1
 	return participants
 
-def contact_ratio_swear_words(texts, message):
+def contact_ratio_swear_words(texts):
 	"""Returns how many times each party sent swear words"""
 	participants = defaultdict(int)
 	for text in texts:
@@ -218,11 +218,11 @@ def contact_ratio_swear_words(texts, message):
 			participants[text['name']] += text['message'].lower().count(swear)
 	return participants
 
-def contact_ratio_neediness(texts, message):
+def contact_ratio_neediness(texts):
 	"""Returns how many times each party sent needy words"""
 	participants = defaultdict(int)
 	for text in texts:
-		for swear in ['i need',
+		for word in ['i need',
 					  'i want',
 					  'my need',
 					  'my want',
@@ -230,13 +230,13 @@ def contact_ratio_neediness(texts, message):
 					  'can you',
 					  'would you',
 					]:
-			participants[text['name']] += text['message'].lower().count(swear)
+			participants[text['name']] += text['message'].lower().count(word)
 	return participants
 
-def contact_ratio_word_count(texts, message, keyword):
+def contact_ratio_word_count(texts, keyword):
 	participants = defaultdict(int)
 	for text in texts:
-		if keyword in text['message'].lower():
+		if keyword.lower() in text['message'].lower():
 			participants[text['name']] += text['message'].lower().count(keyword)
 	return participants
 
@@ -258,7 +258,7 @@ def contact_ratio_sorry(texts, message):
 def contact_ratio_poop(texts, message):
 	return contact_ratio_word_count(texts, message, u'\udca9')
 
-def contact_ratio_all_caps(texts, message):
+def contact_ratio_all_caps(texts):
 	"""Returns how many times each party sent all caps"""
 	participants = defaultdict(int)
 	for text in texts:
@@ -266,21 +266,21 @@ def contact_ratio_all_caps(texts, message):
 			participants[text['name']] += 1
 	return participants
 
-def contact_ratio_k(texts, message):
+def contact_ratio_k(texts):
 	participants = defaultdict(int)
 	for text in texts:
 		if text['message'].lower() == 'k':
 			participants[text['name']] += 1
 	return participants
 
-def contact_ratio_average_length(texts, message):
+def contact_ratio_average_length(texts):
 	"""Returns how many times each party sent all caps"""
 	participants = defaultdict(list)
 	for text in texts:
 		participants[text['name']].append(len(text['message']))
 	return dict((name, "%.2f" % numpy.mean(sizes)) for name, sizes in participants.items())
 
-def contact_ratio_big_words(texts, message):
+def contact_ratio_big_words(texts):
 	participants = defaultdict(int)
 	for text in texts:
 		if len(text['message']) >= 10:
