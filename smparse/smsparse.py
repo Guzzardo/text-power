@@ -4,7 +4,7 @@ from rules import *
 
 
 def main():
-	input_file = open('Adam_s_iPhone and Joe_Guzzardo__UCB___5868500690_.txt')
+	input_file = open('')
 	file_contents = input_file.read().decode("utf-16")
 	username, texts = parse_message_file(file_contents)
 
