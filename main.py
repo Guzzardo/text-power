@@ -17,5 +17,10 @@ def hello_world():
         return render_template('landing.html', name='name')
 
 
+@app.route('/send_sms', methods=['GET'])
+def send_message():
+	send_text()
+
+
 if __name__ == '__main__':
     app.run(debug=True)
