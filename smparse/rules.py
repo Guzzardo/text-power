@@ -16,7 +16,7 @@ def sentiment_count(text):
 			participants[text['name']]['neutral'] += 1
 	return participants
 
-def positivity_ratio(text):
+def positivity_average(text):
 	"""Returns the positivity score for each party"""
 	participants = defaultdict(list)
 	for text in texts:
@@ -30,7 +30,7 @@ def positivity_ratio(text):
 		ret[key] = average
 	return ret
 
-def negativity_ratio(text):
+def negativity_average(text):
 	"""Returns the negativity score for each party"""
 	participants = defaultdict(list)
 	for text in texts:
@@ -44,7 +44,7 @@ def negativity_ratio(text):
 		ret[key] = average
 	return ret
 
-def sentiment_ratio(text):
+def sentiment_average(text):
 	"""Returns the average sentiment for each party"""
 	participants = defaultdict(list)
 	for text in texts:
