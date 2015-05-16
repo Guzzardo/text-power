@@ -64,7 +64,4 @@ def is_emoji(char):
 
 def contains_emoji(string):
 	"""returns True if string contains emoji"""
-	for char in string:
-		if is_emoji(char):
-			return True
-	return False
+	return u'\ud83d' in string
