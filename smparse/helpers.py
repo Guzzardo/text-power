@@ -3,7 +3,6 @@ import re
 import calendar
 from time import mktime
 from datetime import datetime
-import emoji
 import csv
 from twilio.rest import TwilioRestClient
 
@@ -61,14 +60,6 @@ def parse_csv_texts(csv_texts):
 			'attachment': (csv_text['Attachment'] == 'none')
 		})
 	return texts
-
-def is_emoji(char):
-	"""returns True if char is emoji"""
-	try:
-		emoji.decode(char)
-	except ValueError:
-		return False
-	return True
 
 def contains_emoji(string):
 	"""returns True if string contains emoji"""
