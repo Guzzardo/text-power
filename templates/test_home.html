@@ -1,7 +1,64 @@
-This is the test home page!
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb">
+<head>
+    <meta name="description" content="Who run Bartertown?">
+    <meta charset=" utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who run Bartertown?</title>
+</head>
+<body >
+<div class="container" style="max-width: 800px; text-align: center">
+
+<div id="header" class="row center-block">
+    <img id="headerimage" src="http://cdn.movieweb.com/img.news.tops/NE25NZQTx6Km64_2_b.jpg" />
+    <div id="headertext">
+        <div class="row">
+            <div>
+                <h1 id="picmeh1id">
+                    who run bartertown .com
+                </h1>
+            </div>
+            <div class="subheader">
+                WHO RUN BARTERTOWN? <span id="demoSpan">#WhoRun</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-<form action="" method="POST" enctype="multipart/form-data">
-  <input type="file" name="messages">
-  <input type="submit">
-</form>
+<div id="selectImage">
+
+
+<h5 id="searchError" class="bodyfont" style="padding-bottom: 2px; font-size: Medium; text-align: center; visibility: hidden;"></h5>
+    <label id="uploadLabel" class="center-block" style="width: 230px;">
+        <form name="the-form" action="" method="POST" enctype="multipart/form-data">
+<!--             <button id="uploadFileId" class="btn btn-default action" style="background-color: rgb(174, 117, 11); border-radius: 0" onclick="document.the-form.submit()">
+                Analyze your texts
+            </button>
+
+            <input id="uploadBtn" type="file" style="width: 0px; height: 0px"> -->
+
+            <input type="file" name="messages">
+            <button id="uploadFileId" class="btn btn-default action" style="background-color: rgb(174, 117, 11); border-radius: 0" onclick="document.getElementById('uploadBtn').click(); ">
+                Analyze your texts
+            </button>
+            <input id='uploadBtn' type="submit" style="visibility: hidden">
+
+        </form>
+    </label>
+    <p id="maxImageSize" class="help-block center-block bodyfont">P.S. We don't keep the texts</p>
+</div>
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
+
+
+
