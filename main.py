@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
     if request.method == 'POST':
-        messages_content = request.files['messages'].read().decode('utf-8')
+        messages_content = request.files['messages'].read().decode('utf-16')
 
         return render_template('test_results.html', messages_content=messages_content)
     else:
