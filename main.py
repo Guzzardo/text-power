@@ -46,29 +46,43 @@ def hello_world():
 
         kwargs['poop_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
 
-        kwargs['i_want'] = contact_ratio_neediness_i_want(texts)[username],
-        kwargs['they_want'] = contact_ratio_neediness_i_want(texts)[partner_name],
-        kwargs['i_need'] = contact_ratio_neediness_i_need(texts)[username],
-        kwargs['they_need'] = contact_ratio_neediness_i_need(texts)[partner_name],
-        kwargs['i_could'] = contact_ratio_neediness_could_you(texts)[username],
-        kwargs['they_could'] = contact_ratio_neediness_could_you(texts)[partner_name],
+        kwargs['i_want'] = contact_ratio_neediness_i_want(texts)[username][0] or 0,
+        kwargs['they_want'] = contact_ratio_neediness_i_want(texts)[partner_name][0] or 0,
+        kwargs['i_need'] = contact_ratio_neediness_i_need(texts)[username][0] or 0,
+        kwargs['they_need'] = contact_ratio_neediness_i_need(texts)[partner_name][0] or 0,
+        kwargs['i_could'] = contact_ratio_neediness_could_you(texts)[username][0] or 0,
+        kwargs['they_could'] = contact_ratio_neediness_could_you(texts)[partner_name][0] or 0,
 
-        kwargs['im_sorry'] = contact_ratio_sorry(texts)[username]
-        kwargs['they_sorry'] = contact_ratio_sorry(texts)[partner_name]
-        kwargs['i_problem'] = contact_ratio_problem(texts)[username] # np / no problem
-        kwargs['they_problem'] = contact_ratio_problem(texts)[partner_name]
-        kwargs['i_bad'] = contact_ratio_my_bad(texts)[username] # my bad
-        kwargs['they_bad'] = contact_ratio_my_bad(texts)[partner_name]
+        kwargs['im_sorry'] = contact_ratio_sorry(texts)[username] or 0
+        kwargs['they_sorry'] = contact_ratio_sorry(texts)[partner_name] or 0
+        kwargs['i_problem'] = contact_ratio_problem(texts)[username] or 0 # np / no problem
+        kwargs['they_problem'] = contact_ratio_problem(texts)[partner_name] or 0
+        kwargs['i_bad'] = contact_ratio_my_bad(texts)[username] or 0 # my bad
+        kwargs['they_bad'] = contact_ratio_my_bad(texts)[partner_name] or 0
 
+        ratio_values = contact_ratio_big_words(texts)
+        if ratio_values[username] < ratio_values[partner_name]:
+            kwargs['smart_ratio_message'] = "{} sends more big words.".format(partner_first_name)
+        elif ratio_values[username] > ratio_values[partner_name]:
+            kwargs['smart_ratio_message'] = "You send more big words."
+        else:
+            kwargs['smart_ratio_message'] = "You both send the same amount of big words!"
+        kwargs['smart_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
 
+        ratio_values = contact_ratio_big_words(texts)
+        if ratio_values[username] < ratio_values[partner_name]:
+            kwargs['power_ratio_message'] = "{} sends more k.".format(partner_first_name)
+        elif ratio_values[username] > ratio_values[partner_name]:
+            kwargs['power_ratio_message'] = "You send more k."
+        else:
+            kwargs['power_ratio_message'] = "You both send the same amount of k!"
+
+        kwargs['power_count_message'] = "You sent {}, {} sent {}".format(ratio_values[username], partner_first_name, ratio_values[partner_name])
 
 
         return render_template('new_results.html',
         	partner_first_name=partner_first_name,
 
-            # SHAME
-            ratio_i_sorry=contact_ratio_sorry(texts)[username],
-            ratio_they_sorry=contact_ratio_sorry(texts)[partner_name],
             # RAGE
             ratio_i_rage=contact_ratio_all_caps(texts)[username],
             ratio_they_rage=contact_ratio_all_caps(texts)[partner_name],
